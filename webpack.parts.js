@@ -57,3 +57,52 @@ exports.loadCSS = ({ include, exclude } = {}) => ({
     ]
   }
 });
+
+exports.loadImages = ({ include, exclude, options } = {}) => ({
+  module: {
+    rules: [
+      {
+        test: /\.(png|jpg)$/,
+        include,
+        exclude,
+        use: {
+          loader: "url-loader",
+          options
+        }
+      }
+    ]
+  }
+});
+
+exports.loadFonts = ({ include, exclude, options } = {}) => ({
+  module: {
+    rules: [
+      {
+        // Match woff2 and patterns like .woff?v=1.1.1.
+        test: /\.woff2?(\?v=\d+\.\d+\.\d+)?$/,
+        use: {
+          loader: "url-loader",
+          options: {
+            limit: 50000,
+            mimetype: "application/font-woff",
+            name: "./fonts/[name].[ext]", // Output below ./fonts
+            publicPath: "../" // Take the directory into account
+          }
+        }
+      }
+    ]
+  }
+});
+
+exports.loadJavaScript = ({ include, exclude } = {}) => ({
+  module: {
+    rules: [
+      {
+        test: /\.js$/,
+        include,
+        exclude,
+        use: "babel-loader"
+      }
+    ]
+  }
+});

@@ -121,6 +121,9 @@ button::-moz-focus-inner {
 
 body {
   background: cornsilk;
+  background-image: url(testImage.png);
+  background-repeat: no-repeat;
+  background-position: center;
 }
 
 .pure-button {

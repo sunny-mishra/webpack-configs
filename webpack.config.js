@@ -17,7 +17,9 @@ const commonConfig = merge([
         title: "Webpack demo"
       })
     ]
-  }
+  },
+  parts.loadFonts(),
+  parts.loadJavaScript({ include: PATHS.app })
 ]);
 
 const productionConfig = merge([
@@ -26,11 +28,17 @@ const productionConfig = merge([
   }),
   parts.purifyCSS({
     paths: glob.sync(`${PATHS.app}/**/*.js`, { nodir: true })
-  })
+  }),
   /* It's essential the PurifyCSSPlugin plugin is used after
      the MiniCssExtractPlugin; otherwise, it doesn't work. The order
      matters, CSS extraction has to happen before purifying.
   */
+  parts.loadImages({
+    options: {
+      limit: 15000,
+      name: "[name].[ext]"
+    }
+  })
 ]);
 
 const developmentConfig = merge([
@@ -41,13 +49,14 @@ const developmentConfig = merge([
     // The 'process' module is exposed by node as a global. In addition to 'env',
     // it provides other functionality to get more info of the host system.
   }),
-  parts.loadCSS()
+  parts.loadCSS(),
+  parts.loadImages()
 ]);
 
 module.exports = mode => {
+  process.env.BABEL_ENV = mode;
   if (mode === "production") {
     return merge(commonConfig, productionConfig, { mode });
   }
-
   return merge(commonConfig, developmentConfig, { mode });
 };

@@ -35,11 +35,37 @@ const productionConfig = merge([
   */
   parts.loadImages({
     options: {
-      limit: 15000,
+      limit: 1500,
       name: "[name].[ext]"
     }
   }),
-  parts.generateSourceMaps({ type: "source-map" })
+  parts.generateSourceMaps({ type: "source-map" }),
+  parts.clean(PATHS.build),
+  parts.attachRevision(),
+  {
+    optimization: {
+      splitChunks: {
+        cacheGroups: {
+          commons: {
+            test: /[\\/]node_modules[\\/]/,
+            name: "vendor",
+            chunks: "initial"
+          }
+        }
+      }
+    }
+  },
+  parts.minifyJavaScript(),
+  parts.minifyCSS({
+    options: {
+      discardComments: {
+        removeAll: true
+      },
+      // Running cssnano in safe mode to avoid
+      // potentially unsafe transformations.
+      safe: true
+    }
+  })
 ]);
 
 const developmentConfig = merge([

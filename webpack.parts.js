@@ -110,3 +110,37 @@ exports.loadJavaScript = ({ include, exclude } = {}) => ({
 exports.generateSourceMaps = ({ type }) => ({
   devtool: type
 });
+
+const { CleanWebpackPlugin } = require("clean-webpack-plugin");
+exports.clean = path => ({
+  plugins: [new CleanWebpackPlugin()]
+});
+
+const webpack = require("webpack");
+const GitRevisionPlugin = require("git-revision-webpack-plugin");
+exports.attachRevision = () => ({
+  plugins: [
+    new webpack.BannerPlugin({
+      banner: new GitRevisionPlugin().version()
+    })
+  ]
+});
+
+const TerserPlugin = require("terser-webpack-plugin");
+exports.minifyJavaScript = () => ({
+  optimization: {
+    minimizer: [new TerserPlugin({ sourceMap: true })]
+  }
+});
+
+const OptimizeCSSAssetsPlugin = require("optimize-css-assets-webpack-plugin");
+const cssnano = require("cssnano");
+exports.minifyCSS = ({ options }) => ({
+  plugins: [
+    new OptimizeCSSAssetsPlugin({
+      cssProcessor: cssnano,
+      cssProcessorOptions: options,
+      canPrint: false
+    })
+  ]
+});

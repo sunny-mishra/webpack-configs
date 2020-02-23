@@ -19,10 +19,17 @@ const commonConfig = merge([
     ]
   },
   parts.loadFonts(),
-  parts.loadJavaScript({ include: PATHS.app })
+  parts.loadJavaScript({ include: PATHS.app }),
+  parts.setFreeVariable("HELLO", "hello from config")
 ]);
 
 const productionConfig = merge([
+  {
+    output: {
+      chunkFilename: "[name].[chunkhash:4].js",
+      filename: "[name].[chunkhash:4].js"
+    }
+  },
   parts.extractCSS({
     use: ["css-loader", parts.autoprefix()]
   }),
@@ -35,8 +42,8 @@ const productionConfig = merge([
   */
   parts.loadImages({
     options: {
-      limit: 1500,
-      name: "[name].[ext]"
+      limit: 15000,
+      name: "[name].[hash:4].[ext]"
     }
   }),
   parts.generateSourceMaps({ type: "source-map" }),
@@ -52,6 +59,9 @@ const productionConfig = merge([
             chunks: "initial"
           }
         }
+      },
+      runtimeChunk: {
+        name: "manifest" // manifest is a conventional name, any name will work here.
       }
     }
   },

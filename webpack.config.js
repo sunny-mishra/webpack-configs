@@ -28,6 +28,14 @@ const productionConfig = merge([
     output: {
       chunkFilename: "[name].[chunkhash:4].js",
       filename: "[name].[chunkhash:4].js"
+    },
+    recordsPath: path.join(__dirname, "records.json")
+  },
+  {
+    performance: {
+      hints: "warning", // "error" or false are valid too
+      maxEntrypointSize: 200000, // in bytes, default 250k
+      maxAssetSize: 450000 // in bytes
     }
   },
   parts.extractCSS({

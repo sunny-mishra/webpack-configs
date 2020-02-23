@@ -1,0 +1,121 @@
+{
+  "html-webpack-plugin for \"index.html\"": [
+    {
+      "modules": {
+        "byIdentifier": {
+          "node_modules/html-webpack-plugin/lib/loader.js!node_modules/html-webpack-plugin/default_index.ejs": 0,
+          "node_modules/lodash/lodash.js": 1,
+          "node_modules/webpack/buildin/global.js": 2,
+          "node_modules/webpack/buildin/module.js": 3
+        },
+        "usedIds": {
+          "0": 0,
+          "1": 1,
+          "2": 2,
+          "3": 3
+        }
+      },
+      "chunks": {
+        "byName": {},
+        "bySource": {},
+        "usedIds": [
+          1
+        ]
+      }
+    }
+  ],
+  "mini-css-extract-plugin node_modules/css-loader/dist/cjs.js!node_modules/postcss-loader/src/index.js??ref--6-2!src/main.css": [
+    {
+      "modules": {
+        "byIdentifier": {
+          "node_modules/css-loader/dist/cjs.js!node_modules/postcss-loader/src/index.js??ref--6-2!src/main.css": 0,
+          "node_modules/css-loader/dist/runtime/api.js": 1,
+          "node_modules/css-loader/dist/runtime/getUrl.js": 2,
+          "node_modules/url-loader/dist/cjs.js??ref--7!src/testImage.png": 3
+        },
+        "usedIds": {
+          "0": 0,
+          "1": 1,
+          "2": 2,
+          "3": 3
+        }
+      },
+      "chunks": {
+        "byName": {
+          "mini-css-extract-plugin": 0
+        },
+        "bySource": {},
+        "usedIds": [
+          0
+        ]
+      }
+    }
+  ],
+  "mini-css-extract-plugin node_modules/css-loader/dist/cjs.js!node_modules/postcss-loader/src/index.js??ref--6-2!node_modules/purecss/build/pure-min.css": [
+    {
+      "modules": {
+        "byIdentifier": {
+          "node_modules/css-loader/dist/cjs.js!node_modules/postcss-loader/src/index.js??ref--6-2!node_modules/purecss/build/pure-min.css": 0,
+          "node_modules/css-loader/dist/runtime/api.js": 1
+        },
+        "usedIds": {
+          "0": 0,
+          "1": 1
+        }
+      },
+      "chunks": {
+        "byName": {
+          "mini-css-extract-plugin": 0
+        },
+        "bySource": {},
+        "usedIds": [
+          0
+        ]
+      }
+    }
+  ],
+  "modules": {
+    "byIdentifier": {
+      "node_modules/react/index.js": 0,
+      "node_modules/object-assign/index.js": 1,
+      "node_modules/react/cjs/react.production.min.js": 2,
+      "node_modules/react-dom/index.js": 3,
+      "node_modules/react-dom/cjs/react-dom.production.min.js": 4,
+      "node_modules/scheduler/index.js": 5,
+      "node_modules/scheduler/cjs/scheduler.production.min.js": 6,
+      "node_modules/mini-css-extract-plugin/dist/loader.js!node_modules/css-loader/dist/cjs.js!node_modules/postcss-loader/src/index.js??ref--6-2!node_modules/purecss/build/pure-min.css": 7,
+      "node_modules/mini-css-extract-plugin/dist/loader.js!node_modules/css-loader/dist/cjs.js!node_modules/postcss-loader/src/index.js??ref--6-2!src/main.css": 8,
+      "node_modules/babel-loader/lib/index.js!src/index.js 6941fbad90ac0491597b9e607b95c0b2": 9,
+      "node_modules/babel-loader/lib/index.js!src/lazyString.js": 10
+    },
+    "usedIds": {
+      "0": 0,
+      "1": 1,
+      "2": 2,
+      "3": 3,
+      "4": 4,
+      "5": 5,
+      "6": 6,
+      "7": 7,
+      "8": 8,
+      "9": 9,
+      "10": 10
+    }
+  },
+  "chunks": {
+    "byName": {
+      "main": 0,
+      "manifest": 1,
+      "vendor": 2
+    },
+    "bySource": {
+      "0 node_modules/babel-loader/lib/index.js!src/component.js ./lazyString": 3
+    },
+    "usedIds": [
+      0,
+      1,
+      2,
+      3
+    ]
+  }
+}

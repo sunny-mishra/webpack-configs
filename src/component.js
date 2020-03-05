@@ -1,17 +1,17 @@
-export default (text = HELLO) => {
-  const element = document.createElement("div");
+import Worker from "worker-loader!./worker";
 
-  element.className = "pure-button";
-  element.innerHTML = text;
+export default () => {
+  const element = document.createElement("h1");
+  const worker = new Worker();
+  const state = { text: "foo" };
 
-  element.onclick = () =>
-    import("./lazyString")
-      .then(lazy => {
-        element.textContent = lazy.default;
-      })
-      .catch(err => {
-        console.error(err);
-      });
+  worker.addEventListener("message", ({ data: { text } }) => {
+    state.text = text;
+    element.innerHTML = text;
+  });
+
+  element.innerHTML = state.text;
+  element.onclick = () => worker.postMessage({ text: state.text });
 
   return element;
 };

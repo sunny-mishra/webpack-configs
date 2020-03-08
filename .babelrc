@@ -11,7 +11,11 @@
   ],
   "env": {
     "development": {
-      "plugins": ["annotate-console-log"]
+      "plugins": [
+        // "annotate-console-log",
+        "istanbul",
+        { "exclude": ["tests/*.test.js"] }
+      ]
     }
   }
 }
